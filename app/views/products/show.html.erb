@@ -17,9 +17,12 @@
 
 <p>
   <strong>User:</strong>
-  <%= @product.user %>
+  <%= render @product.user %>
 </p>
 
-<%= @product.reviews.each {|r| r.content} %>
+<%= render @product.reviews %>
+
+<p>Add a review</p>
+<%= render "reviews/form" %>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>

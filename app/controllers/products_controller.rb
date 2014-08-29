@@ -15,6 +15,7 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
+    @product.user_id = current_user.id
   end
 
   # GET /products/1/edit
@@ -25,6 +26,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     @product = Product.new(product_params)
+    @product.user_id = current_user.id
 
     respond_to do |format|
       if @product.save
