@@ -19,4 +19,11 @@ $(document).ready(function(){
     });
     
     });
+
+    // $(window).scroll(function(){
+    // 	if ($(window).scrollTop() > $(document).height() - $(window).height() - 50) {
+    // 		return alert('bottom');
+    // 		$.getScript($('.pagination span.next').children().attr('href'));
+    // 	};
+    // });
 });
