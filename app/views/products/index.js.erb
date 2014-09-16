@@ -1,0 +1,6 @@
+<% if @products.empty? %>
+	$('#products').html('No products');
+<% else %>
+	$('#products').html("<%= j(render @products) %>");
+<% end %>
+

@@ -1,11 +1,22 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  # before_action :authenticate_user!, except: [:show, :index]
 
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
-  end
+    @products = if params[:search]
+      Product.where("LOWER(name) LIKE LOWER(?)", "%#{params[:search]}%")
+    else
+      Product.all
+    end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+  end 
 
   # GET /products/1
   # GET /products/1.json
