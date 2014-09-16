@@ -17,12 +17,29 @@
 
 <p>
   <strong>User:</strong>
-  <%= render @product.user %>
 </p>
 
-<%= render @product.reviews %>
+<div id="review-list">
+    <%= render :partial => "reviews" %>
+</div>
 
 <p>Add a review</p>
 <%= render "reviews/form" %>
 <%= link_to 'Edit', edit_product_path(@product) %> |
 <%= link_to 'Back', products_path %>
+
+<script type="text/javascript">
+  $(function() {
+     $("#new_review")
+        .on('ajax:beforeSend', function() { // set this code to happen just before the ajax request is made
+          $("input[type='submit']") // make changes to the submit button
+            .val('Saving...') // change the text on the button
+            .attr('disabled', 'disabled'); // disable the button
+        })
+        .on('ajax:complete', function() {
+          $("input[type='submit']")
+            .val('Create Review')
+            .removeAttr('disabled');
+        });
+  });
+</script>

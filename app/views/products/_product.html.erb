@@ -1,4 +1,5 @@
 <%= product.name %><br>
 <%= product.description %><br>
 <%= product.price %><br>
-<%= product.user %><br><br>
+
+<%= link_to 'Review', new_product_review_path(product) %><br>
